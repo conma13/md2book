@@ -1,0 +1,59 @@
+# ============================
+# PowerShell project ignores
+# ============================
+
+# Compiled scripts and temporary files
+*.ps1xml
+*.psc1
+*.pssc
+*.psd1.tmp
+*.psm1.tmp
+
+# Logs and debug files
+*.log
+*.trace
+*.dbg
+
+# Cache PowerShell
+*/__pycache__/
+*/.cache/
+*/.pscache/
+*/.pswork/
+
+# PowerShellGet / PSGallery
+*/Modules/*/InstalledModules/
+*/Modules/*/InstalledScriptInfo.xml
+
+# Build artefacts
+build/
+out/
+dist/
+bin/
+obj/
+release/
+debug/
+
+# Testing artefacts
+TestResults/
+*.coverage
+*.coveragexml
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# Windows specific
+Thumbs.db
+Desktop.ini
+
+# System files
+.DS_Store
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Git
+.gitignore
+.gitattributes
