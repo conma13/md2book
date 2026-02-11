@@ -1,5 +1,7 @@
 ## dotnet
 
+**Copilot drafts. Not tested or reviewed.**
+
 **Pattern:** Command + Pipeline/Processor + Services
 
 ### Used packages
