@@ -10,37 +10,25 @@ namespace md2book.Commands
 {
     public class BuildPdf : Command
     {
-        private readonly Option<string> _inputOpt;
-        private readonly Option<string> _outputOpt;
-        private readonly Option<string> _titleOpt;
-        private readonly Option<string> _titlefileOpt;
-        private readonly Option<uint> _levelOpt;
-
-        public BuildPdf(BuildPipeline pipeline,
-                        Option<string> inputOpt,
-                        Option<string> outputOpt,
-                        Option<string> titleOpt,
-                        Option<string> titlefileOpt,
-                        Option<uint> levelOpt
-            ) 
+        public BuildPdf(BuildPipeline pipeline) 
             : base("pdf", "Create pdf e-book")
         {
-            _inputOpt = inputOpt;
-            _outputOpt = outputOpt;
-            _titleOpt = titleOpt;
-            _titlefileOpt = titlefileOpt;
-            _levelOpt = levelOpt;
+            Options.Add(GlobalOptions.Input);
+            Options.Add(GlobalOptions.Output);
+            Options.Add(GlobalOptions.Title);
+            Options.Add(GlobalOptions.TitleFile);
+            Options.Add(GlobalOptions.TOCLevel);
 
             SetAction((ParseResult parseResult) =>
             {
                 var ctx = new BuildContext
                 {
-                    InputFolder = parseResult.GetValue<string>(_inputOpt),
-                    OutputFile = parseResult.GetValue<string>(_outputOpt),
+                    InputFolder = parseResult.GetValue<string>(GlobalOptions.Input),
+                    OutputFile = parseResult.GetValue<string>(GlobalOptions.Output),
                     //TODO Add Title calculation if titleOpt and titlefileOpt are both empty
-                    Title = parseResult.GetValue<string>(_titleOpt),
-                    TitleFile = parseResult.GetValue<string>(_titlefileOpt),
-                    TocLevel = parseResult.GetValue<uint>(_levelOpt),
+                    Title = parseResult.GetValue<string>(GlobalOptions.Title),
+                    TitleFile = parseResult.GetValue<string>(GlobalOptions.TitleFile),
+                    TocLevel = parseResult.GetValue<uint>(GlobalOptions.TOCLevel),
                 };
 
                 pipeline.Run(ctx);
