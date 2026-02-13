@@ -28,16 +28,16 @@ namespace md2book.Models
             DefaultValueFactory = parseResult => "book",
             HelpName = "OUTPUT FILE",
         };
-        public static readonly Option<string> Title = new("--title")
+        public static readonly Option<string?> Title = new("--title")
         {
             Description = """
             Text for the title page; ignored if --titlefile 
-            is provided.
+            is provided. Use "" to disable page generation
                 [default: basename of the input directory]
             """,
             HelpName = "string",
         };
-        public static readonly Option<string> TitleFile = new("--titlefile")
+        public static readonly Option<string?> TitleFile = new("--titlefile")
         {
             Description = """
                 Path to a Markdown file containing the book's 
@@ -52,7 +52,7 @@ namespace md2book.Models
             Use 0 to disable.
 
             """,
-            DefaultValueFactory = parseResult => 2,
+            DefaultValueFactory = parseResult => 1,
             HelpName = "uint",
         };
 

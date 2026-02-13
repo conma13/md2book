@@ -12,7 +12,7 @@ md2book --output the-book.pdf --toclevel 2 --titlefile title.md ~/mybook
    - --output, -o *- output file name, default: "book"*
    - --title *- text for the title page, ignored if --titlefile is provided, default: basename of the input directory*
    - --titlefile *- path to a Markdown file containing the book's title page, optional*
-   - --toclevel *- Markdown header level used to generate the TOC, default: 2, disable: 0*
+   - --toclevel *- Markdown header level used to generate the TOC, default: 1, disable: 0*
 2. [ ] Find Markdown files in the input folder
 3. [ ] Sort Markdown files alphabeticaly
 4. [ ] Extract headers of the desired level from Markdown files

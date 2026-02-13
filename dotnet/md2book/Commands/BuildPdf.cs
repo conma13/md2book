@@ -1,10 +1,6 @@
 ﻿using md2book.Models;
 using md2book.Pipeline;
-using System;
-using System.Collections.Generic;
 using System.CommandLine;
-using System.Reflection.Emit;
-using System.Text;
 
 namespace md2book.Commands
 {
@@ -21,14 +17,24 @@ namespace md2book.Commands
 
             SetAction((ParseResult parseResult) =>
             {
+                var inputFolder = parseResult.GetValue(GlobalOptions.Input)!;
+                var titleFile = parseResult.GetValue(GlobalOptions.TitleFile);
+                var title = parseResult.GetValue(GlobalOptions.Title);
+
+                if (string.IsNullOrWhiteSpace(titleFile))
+                {
+                    titleFile = null;
+                    title ??= Path.GetFileName(Path.GetFullPath(inputFolder));
+                }
+
                 var ctx = new BuildContext
                 {
-                    InputFolder = parseResult.GetValue<string>(GlobalOptions.Input),
-                    OutputFile = parseResult.GetValue<string>(GlobalOptions.Output),
-                    //TODO Add Title calculation if titleOpt and titlefileOpt are both empty
-                    Title = parseResult.GetValue<string>(GlobalOptions.Title),
-                    TitleFile = parseResult.GetValue<string>(GlobalOptions.TitleFile),
-                    TocLevel = parseResult.GetValue<uint>(GlobalOptions.TOCLevel),
+                    
+                    InputFolder = inputFolder,
+                    OutputFile = parseResult.GetValue(GlobalOptions.Output)!,
+                    Title = title,
+                    TitleFile = titleFile,
+                    TocLevel = parseResult.GetValue(GlobalOptions.TOCLevel),
                 };
 
                 pipeline.Run(ctx);
