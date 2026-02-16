@@ -10,7 +10,7 @@ namespace md2book.Commands
         private readonly GlobalOptions _globals;
         private readonly ILogger<BuildPdf> _logger;
 
-        public BuildPdf(GlobalOptions globals, ILogger<BuildPdf> logger, BuildPipeline pipeline) 
+        public BuildPdf(GlobalOptions globals, ILogger<BuildPdf> logger, BuildPdfPipeline pipeline) 
             : base("pdf", "Create pdf e-book")
         {
             _globals = globals;
@@ -48,7 +48,7 @@ namespace md2book.Commands
 
                 _logger.LogInformation(logstr);
 
-                pipeline.Run(ctx);
+                pipeline.Run(ctx, _logger);
             });
 
         }

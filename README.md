@@ -3,11 +3,11 @@ Build eBook from several Markdown files, add contents and title page
 
 ## Command line looks like:
 ```
-md2book --output the-book.pdf --toclevel 2 --titlefile title.md ~/mybook
+md2book --input ~/mybook --output the-book.pdf --titlefile title.md --toclevel 2
 ```
 
 ## Algorithm:
-1. [ ] Read command line options
+1. [x] Read command line options
    - --input, -i *- input-directory, default: "."*
    - --output, -o *- output file name, default: "book"*
    - --title *- text for the title page, ignored if --titlefile is provided, default: basename of the input directory*

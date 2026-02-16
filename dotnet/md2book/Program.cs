@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.CommandLine;
 using System.CommandLine.Help;
 using Microsoft.Extensions.Logging;
-// using md2book.Pipeline.Steps;
+using md2book.Pipeline.Steps;
 // using md2book.Services;
 
 namespace md2book
@@ -36,7 +36,7 @@ namespace md2book
             // services.AddSingleton<IPdfBuilder, PdfBuilder>();
 
             // Pipeline steps
-            // services.AddSingleton<LoadFilesStep>();
+            services.AddSingleton<LoadFilesStep>();
             // services.AddSingleton<SortFilesStep>();
             // services.AddSingleton<ExtractHeadingsStep>();
             // services.AddSingleton<BuildTocStep>();
@@ -44,7 +44,7 @@ namespace md2book
             // services.AddSingleton<BuildPdfStep>();
 
             // Add pipelines
-            services.AddSingleton<BuildPipeline>();
+            services.AddSingleton<BuildPdfPipeline>();
 
             // Add commands
             services.AddSingleton<BuildPdf>();
