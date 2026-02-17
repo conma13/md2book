@@ -7,6 +7,6 @@ namespace md2book.Pipeline.Steps
 {
     public interface IPipelineStep<TContext>
     {
-        void Execute(TContext context, ILogger logger);
+        void Execute(TContext context);
     }
 }

@@ -48,7 +48,7 @@ namespace md2book.Commands
 
                 _logger.LogInformation(logstr);
 
-                pipeline.Run(ctx, _logger);
+                pipeline.Run(ctx);
             });
 
         }

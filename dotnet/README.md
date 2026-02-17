@@ -4,6 +4,18 @@
 
 **Pattern:** Command + Pipeline/Processor + Services
 
+### TODO
+- [ ] Add file logger
+    - [ ] Serilog from Serilog.Extensions.Logging + Serilog.Sinks.File
+    - [ ] (Minimalistic) Microsoft.Extensions.Logging.File 
+        ```c#
+        services.AddLogging(builder =>
+        {
+            builder.AddConsole();
+            builder.AddFile("logs/app.log");
+        });
+        ```
+
 ### Used packages
    |  |  |
    | --- | --- |

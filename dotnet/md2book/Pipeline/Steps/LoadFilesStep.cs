@@ -8,7 +8,14 @@ namespace md2book.Pipeline.Steps
 {
     public class LoadFilesStep : IPipelineStep<BuildContext>
     {
-        public void Execute(BuildContext ctx, ILogger logger)
+        private readonly ILogger<LoadFilesStep> _logger;
+
+        public LoadFilesStep(ILogger<LoadFilesStep> logger)
+        {
+            _logger = logger;
+        }
+
+        public void Execute(BuildContext ctx)
         {
             var files = Directory.GetFiles(ctx.InputFolder, "*.md");
 
@@ -39,7 +46,7 @@ namespace md2book.Pipeline.Steps
                 : "Title page file not found.")}}
             """;
 
-            logger.LogInformation(logstr);
+            _logger.LogInformation(logstr);
         }
     }
 }
